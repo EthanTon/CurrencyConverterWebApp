@@ -21,8 +21,6 @@ function App() {
             </a>
           </center>
         </>
-
-        
       </div>
     </>
   );

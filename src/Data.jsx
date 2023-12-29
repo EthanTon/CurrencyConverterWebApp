@@ -69,11 +69,10 @@ export function accessData() {
   console.log(dataDeserialized);
   try {
     let data = new Map(Object.entries(dataDeserialized));
-    console.log(data);
     return data;
   } catch (error) {
-    let data = Promise.resolve(retrieveData());
-    console.log(data);
+    updateData();
+    let data = retrieveData();
     return data;
   }
 }
