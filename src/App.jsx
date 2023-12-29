@@ -5,15 +5,14 @@ import divider from './assets/divider.svg'
 import "./index.css"
 
 function App() {
-  useEffect(() => {
-    updateData();
-  }, []);
+
 
   return (
     <>
       <div className="container">
         <>
           <center>
+            {updateData()}
             <InputField />
             <OptionsMenu className="align-left" />
             <a href="https://fixer.io/faq" className="align-right" >
