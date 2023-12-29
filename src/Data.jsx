@@ -58,24 +58,22 @@ async function retrieveData(){
   return data;
 }
 
-export function updateData(){
-  let data = retrieveData();
-
-  localStorage.setItem("data", JSON.stringify(Object.fromEntries(data)));
-
+export function updateData() {
+  retrieveData().then((data) =>
+    localStorage.setItem("data", JSON.stringify(Object.fromEntries(data)))
+  );
 }
 
-export function accessData(){
+export function accessData() {
   const dataDeserialized = JSON.parse(localStorage.getItem("data"));
-  console.log(dataDeserialized)
-  
+  console.log(dataDeserialized);
+
   try {
     const data = new Map(Object.entries(dataDeserialized));
     return data;
   } catch (error) {
     updateData();
     return accessData();
-
   }
 }
 
