@@ -5,10 +5,7 @@ import divider from './assets/divider.svg'
 import "./index.css"
 
 function App() {
-  useEffect(() => {
-    console.log('updating data')
-    updateData();
-  }, []);
+  updateData();
 
   return (
     <>
