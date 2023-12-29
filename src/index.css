@@ -80,6 +80,7 @@ a{
 
 .update {
     position: relative;
+    display: inline-block;
     align-content: center;
     background-color: transparent;
     border-radius: 100%;
@@ -93,6 +94,7 @@ a{
 }
 
 .timestamp_Dark {
+    display: inline-block;
     font-family: 'Open Sans', sans-serif;
     font-size: 10px;
     color: #919191;
@@ -117,5 +119,6 @@ a{
 .align-right{
     padding-left: 125px;
 }
+
 
 

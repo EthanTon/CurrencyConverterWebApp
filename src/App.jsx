@@ -161,8 +161,9 @@ function OptionsMenu() {
       <button
         className="update"
         id="update"
-        onClick={async () => {
-          await updateData().then(() => setTimestamp(accessData().get("lastUpdated")));
+        onClick={() => {
+          updateData();
+          setTimestamp(accessData().get("lastUpdated"));
         }}>
         <center>
           <img src={updateButton} />
