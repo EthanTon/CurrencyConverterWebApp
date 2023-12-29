@@ -60,17 +60,27 @@ async function retrieveData(){
 
 export function updateData(){
   let data = retrieveData();
+  
 
   data
     .then((d) =>
       localStorage.setItem("data", JSON.stringify(Object.fromEntries(d)))
-    );
+    ).then(() => console.log(data));
 }
 
 export function accessData(){
   console.log("Accessing data")
-  let dataDeserialized = JSON.parse(localStorage.getItem("data"));
-  console.log(dataDeserialized)
+  try {
+    let dataDeserialized = JSON.parse(localStorage.getItem("data"));
+    console.log(dataDeserialized)
+  } catch (error) {
+    updateData();
+    let dataDeserialized = JSON.parse(localStorage.getItem("data"));
+    console.log(dataDeserialized)
+  }
+  
+  
+  
   // const data = new Map(Object.entries(dataDeserialized));
 
   return data;
