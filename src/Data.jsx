@@ -71,7 +71,7 @@ export function accessData() {
     let data = new Map(Object.entries(dataDeserialized));
     return data;
   } catch (error) {
-    let data = retrieveData();
+    let data = Promise.resolve(retrieveData());
     return data;
   }
 }
