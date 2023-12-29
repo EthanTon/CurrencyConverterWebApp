@@ -30,7 +30,7 @@ function timeConverter(UNIX_timestamp) {
   return time;
 };
 
-async function retrieveData(){
+function retrieveData(){
   const firebaseConfig = {
     apiKey: "AIzaSyCiYyGh-b4_hWz9qw71eQ1K_0s5j_N4jRc",
     authDomain: "satoshi-be9c7.firebaseapp.com",
@@ -47,7 +47,7 @@ async function retrieveData(){
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
   const docRef = doc(db, "ExchangeRates","Latest");
-  const docSnap = await getDoc(docRef).catch(err => console.log(err));
+  const docSnap = getDoc(docRef).catch(err => console.log(err));
   
   const data = new Map([
     ["lastUpdated", timeConverter(docSnap.data()["timestamp"])],
@@ -60,16 +60,12 @@ async function retrieveData(){
 
 export function updateData(){
   let data = retrieveData();
-  
 
-  data
-    .then((d) =>
-      localStorage.setItem("data", JSON.stringify(Object.fromEntries(d)))
-    ).then(() => console.log(data));
+  localStorage.setItem("data", JSON.stringify(Object.fromEntries(data)));
+
 }
 
 export function accessData(){
-  console.log("Accessing data")
   const dataDeserialized = JSON.parse(localStorage.getItem("data"));
   console.log(dataDeserialized)
   
@@ -77,7 +73,8 @@ export function accessData(){
     const data = new Map(Object.entries(dataDeserialized));
     return data;
   } catch (error) {
-    return Promise.resolve(updateData().then(()=>accessData()));
+    updateData();
+    return accessData();
 
   }
 }

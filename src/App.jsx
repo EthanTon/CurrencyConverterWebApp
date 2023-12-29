@@ -6,7 +6,6 @@ import "./index.css"
 
 function App() {
   useEffect(() => {
-    console.log('updating data')
     updateData();
   }, []);
 
@@ -162,9 +161,8 @@ function OptionsMenu() {
       <button
         className="update"
         id="update"
-        onClick={() => {
-          updateData();
-          setTimestamp(accessData().get("lastUpdated"));
+        onClick={async () => {
+          await updateData().then(() => setTimestamp(accessData().get("lastUpdated")));
         }}>
         <center>
           <img src={updateButton} />
