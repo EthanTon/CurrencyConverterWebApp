@@ -40,6 +40,7 @@ function InputField() {
 
   function convert(value = 1, inputCurrency = "EUR", outputCurrency = "EUR") {
     const data = accessData();
+    console.log(typeof data)
     return (
       Math.floor(
         (value / data.get("rate")[inputCurrency]) *
