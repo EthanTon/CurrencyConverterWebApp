@@ -68,9 +68,10 @@ export function updateData(){
 }
 
 export function accessData(){
+  console.log("Accessing data")
   let dataDeserialized = JSON.parse(localStorage.getItem("data"));
-
-  const data = new Map(Object.entries(dataDeserialized));
+  console.log(dataDeserialized)
+  // const data = new Map(Object.entries(dataDeserialized));
 
   return data;
 }
