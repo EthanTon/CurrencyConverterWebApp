@@ -30,7 +30,7 @@ function timeConverter(UNIX_timestamp) {
   return time;
 };
 
-function retrieveData(){
+async function retrieveData(){
   const firebaseConfig = {
     apiKey: "AIzaSyCiYyGh-b4_hWz9qw71eQ1K_0s5j_N4jRc",
     authDomain: "satoshi-be9c7.firebaseapp.com",
@@ -47,7 +47,7 @@ function retrieveData(){
   // Initialize Cloud Firestore and get a reference to the service
   const db = getFirestore(app);
   const docRef = doc(db, "ExchangeRates","Latest");
-  const docSnap = getDoc(docRef).catch(err => console.log(err));
+  const docSnap = await getDoc(docRef).catch(err => console.log(err));
   
   const data = new Map([
     ["lastUpdated", timeConverter(docSnap.data()["timestamp"])],
