@@ -67,14 +67,14 @@ export function updateData() {
 export function accessData() {
   const dataDeserialized = JSON.parse(localStorage.getItem("data"));
   console.log(dataDeserialized);
-
+  let data;
   try {
-    const data = new Map(Object.entries(dataDeserialized));
-    return data;
+    data = new Map(Object.entries(dataDeserialized));
   } catch (error) {
-    updateData();
-    return accessData();
+    updateData().then(data = accessData());
   }
+
+  return data;
 }
 
 export function getSymbols(){
