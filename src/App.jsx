@@ -6,6 +6,7 @@ import "./index.css"
 
 function App() {
   useEffect(() => {
+    console.log('updating data')
     updateData();
   }, []);
 

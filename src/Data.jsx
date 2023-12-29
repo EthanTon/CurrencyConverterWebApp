@@ -70,18 +70,10 @@ export function updateData(){
 
 export function accessData(){
   console.log("Accessing data")
-  try {
-    let dataDeserialized = JSON.parse(localStorage.getItem("data"));
-    console.log(dataDeserialized)
-  } catch (error) {
-    updateData();
-    let dataDeserialized = JSON.parse(localStorage.getItem("data"));
-    console.log(dataDeserialized)
-  }
+  const dataDeserialized = JSON.parse(localStorage.getItem("data"));
+  console.log(dataDeserialized)
   
-  
-  
-  // const data = new Map(Object.entries(dataDeserialized));
+  const data = new Map(Object.entries(dataDeserialized));
 
   return data;
 }
