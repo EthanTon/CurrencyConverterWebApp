@@ -30,7 +30,7 @@ function timeConverter(UNIX_timestamp) {
   return time;
 };
 
-async function retrieveData(){
+export async function retrieveData(){
   const firebaseConfig = {
     apiKey: "AIzaSyCiYyGh-b4_hWz9qw71eQ1K_0s5j_N4jRc",
     authDomain: "satoshi-be9c7.firebaseapp.com",
@@ -65,8 +65,16 @@ export function updateData() {
 }
 
 export function accessData() {
+  console.log(localStorage.getItem("data") === null)
+  if(localStorage.getItem("data") === null){
+    updateData();
+    let data = new Map([["lastUpdated", "Refresh for the latest 0:0"],["rate", {"EUR": 1.00}]]);
+    console.log(data);
+    return data
+  }
   const dataDeserialized = JSON.parse(localStorage.getItem("data"));
   console.log(dataDeserialized);
+
   let data = new Map(Object.entries(dataDeserialized));
   return data;
 }
@@ -76,4 +84,6 @@ export function getSymbols(){
 
   return symbolsList
 }
+
+
 
