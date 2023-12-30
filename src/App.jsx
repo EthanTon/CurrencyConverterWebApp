@@ -6,7 +6,10 @@ import "./index.css"
 
 
 function App() {
-  updateData()
+  useEffect(() => {updateData()},[]);
+  
+  
+  
 
   return (
     <>
@@ -30,20 +33,16 @@ function InputField() {
   const units = Object.keys(symbols).sort();
 
   const [currency1Unit, setCurrency1Unit] = useState("Euro");
-  const [currency1, setCurrency1] = useState("1");
+  const [currency1, setCurrency1] = useState("1.00");
 
   const [currency2Unit, setCurrency2Unit] = useState("Euro");
-  const [currency2, setCurrency2] = useState("1");
+  const [currency2, setCurrency2] = useState("1.00");
 
   function convert(value = 1, inputCurrency = "EUR", outputCurrency = "EUR") {
     const data = accessData();
-    console.log(typeof data)
     return (
-      Math.floor(
-        (value / data.get("rate")[inputCurrency]) *
-          data.get("rate")[outputCurrency] *
-          100
-      ) / 100
+      ((value * data.get("rate")[outputCurrency]) /
+      data.get("rate")[inputCurrency]).toFixed(2).replace(/\.(\d)$/, '.$10')
     );
   }
 
@@ -70,7 +69,6 @@ function InputField() {
           min="0"
           value={currency1}
           onChange={(e) => {
-            if (e.target.value >= 0) {
               setCurrency1(e.target.value);
               setCurrency2(
                 convert(
@@ -79,7 +77,6 @@ function InputField() {
                   symbols[currency2Unit]
                 )
               );
-            }
           }}></input>
         <p className="divider">
           <img src={divider} />
@@ -112,7 +109,6 @@ function InputField() {
           min="0"
           value={currency2}
           onChange={(e) => {
-            if (e.target.value >= 0) {
               setCurrency2(e.target.value);
               setCurrency1(
                 convert(
@@ -121,7 +117,6 @@ function InputField() {
                   symbols[currency1Unit]
                 )
               );
-            }
           }}></input>
         <p className="divider">
           <img src={divider} />
@@ -134,7 +129,7 @@ function InputField() {
               setCurrency2Unit(a.target.value);
               setCurrency1(
                 convert(
-                  currency1,
+                  currency2,
                   symbols[a.target.value],
                   symbols[currency1Unit]
                 )

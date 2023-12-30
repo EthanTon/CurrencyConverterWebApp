@@ -65,15 +65,12 @@ export function updateData() {
 }
 
 export function accessData() {
-  console.log(localStorage.getItem("data") === null)
   if(localStorage.getItem("data") === null){
     updateData();
     let data = new Map([["lastUpdated", "Refresh for the latest 0:0"],["rate", {"EUR": 1.00}]]);
-    console.log(data);
     return data
   }
   const dataDeserialized = JSON.parse(localStorage.getItem("data"));
-  console.log(dataDeserialized);
 
   let data = new Map(Object.entries(dataDeserialized));
   return data;
