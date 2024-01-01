@@ -8,23 +8,15 @@ import "./index.css"
 function App() {
   useEffect(() => {updateData()},[]);
   
-  
-  
-
   return (
-    <>
-      <div className="container">
-        <>
-          <center>
+    <center>
+      <div className="main-container">
             <InputField />
-            <OptionsMenu className="align-left" />
-            <a href="https://fixer.io/faq" className="align-right">
-              source
-            </a>
-          </center>
-        </>
+          <div className ="sub-information-wrapper">
+              <OptionsMenu />
+          </div>
       </div>
-    </>
+      </center>
   );
 }
 
@@ -58,9 +50,8 @@ function InputField() {
     );
   }
 
-
   return (
-    <>
+    <div className = "input-wrapper">
       <Title/>
       <form className="input-field">
         <input
@@ -69,19 +60,19 @@ function InputField() {
           min="0"
           value={currency1}
           onChange={(e) => {
-              setCurrency1(e.target.value);
-              setCurrency2(
-                convert(
-                  e.target.value,
-                  symbols[currency1Unit],
-                  symbols[currency2Unit]
-                )
-              );
+              if(e.target.value >=0 ){
+                setCurrency1(e.target.value);
+                setCurrency2(
+                  convert(
+                    e.target.value,
+                    symbols[currency1Unit],
+                    symbols[currency2Unit]
+                ));
+              }
           }}></input>
         <p className="divider">
           <img src={divider} />
         </p>
-        <label>
           <select
             className="currency-list"
             value={currency1Unit}
@@ -100,7 +91,6 @@ function InputField() {
               return <option key={units}>{units}</option>;
             })}
           </select>
-        </label>
       </form>
       <form className="input-field">
         <input
@@ -109,19 +99,19 @@ function InputField() {
           min="0"
           value={currency2}
           onChange={(e) => {
+            if (e.target.value >= 0){
               setCurrency2(e.target.value);
               setCurrency1(
                 convert(
                   e.target.value,
                   symbols[currency2Unit],
                   symbols[currency1Unit]
-                )
-              );
+                ));
+            }
           }}></input>
         <p className="divider">
           <img src={divider} />
         </p>
-        <label>
           <select
             className="currency-list"
             value={currency2Unit}
@@ -140,9 +130,8 @@ function InputField() {
               return <option key={units}>{units}</option>;
             })}
           </select>
-        </label>
       </form>
-    </>
+    </div>
   );
 }
 
@@ -153,7 +142,6 @@ function OptionsMenu() {
     <>
       <button
         className="update"
-        id="update"
         onClick={() => {
           updateData();
           setTimestamp(accessData().get("lastUpdated"));

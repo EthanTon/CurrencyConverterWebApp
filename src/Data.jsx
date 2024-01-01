@@ -81,6 +81,3 @@ export function getSymbols(){
 
   return symbolsList
 }
-
-
-
