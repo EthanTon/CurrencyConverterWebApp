@@ -17,16 +17,15 @@ app.on('activate', function () {
 });
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 1024,
-    titleBarStyle: 'hiddenInset',
-    titleBarOverlay: {
-      color: '#2f3241',
-      symbolColor: '#74b1be',
-      height: 60
-    }
+    width: 500,
+    height: 280,
+    resizable: false,
+
+
+    titleBarStyle: "hiddenInset",
+    titleBarOverlay: true
   });
-  mainWindow.loadURL(isDev ? 'http://localhost:3000/CurrencyConverterWebApp/' : `file://${path.join(__dirname, '../public/index.html')}`);
+  mainWindow.loadFile(path.join(app.getAppPath(), 'dist/index.html'));
   mainWindow.on('closed', function () {
     mainWindow = null
   })

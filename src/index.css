@@ -25,6 +25,11 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+.titlebar{
+    height: 1.75em;
+    -webkit-app-region: drag;
+}
+
 .main-container{
     position: relative;
     align-items: center;

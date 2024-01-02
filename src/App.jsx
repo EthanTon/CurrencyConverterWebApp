@@ -9,14 +9,18 @@ function App() {
   useEffect(() => {updateData()},[]);
   
   return (
-    <center>
-      <div className="main-container">
-            <InputField />
-          <div className ="sub-information-wrapper">
-              <OptionsMenu />
-          </div>
-      </div>
+    <>
+      <div className="titlebar"/>
+      <center>
+        <div className="main-container">
+              <InputField />
+            <div className ="sub-information-wrapper">
+                <OptionsMenu />
+            </div>
+        </div>
       </center>
+    </>
+    
   );
 }
 
