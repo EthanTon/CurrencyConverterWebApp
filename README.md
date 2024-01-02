@@ -1,8 +1,20 @@
-# React + Vite
+# Currverter - Simple React Currency Converter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Currverter is a straightforward React currency converter app that allows users to quickly convert between different currencies. The app retrieves exchange rate data from the Fixer API twice every business day to ensure accurate and up-to-date conversion rates.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features
+Currency conversion: Easily convert between various currencies.
+Updated Exchange Rates: The app fetches the latest exchange rates from the Fixer API twice every business day.
+User-friendly Interface: A clean and intuitive interface for seamless user experience.
+How to Use
+Clone the repository:
+
+Electron App
+If you prefer a standalone desktop application, you can download the Electron version of Currverter. Choose the appropriate download link below:
+
+Download for Windows (Provide the link to the Windows download)
+Download for macOS (Provide the link to the macOS download)
+Download for Linux (Provide the link to the Linux download)
+Contribute
+If you'd like to contribute to Currverter, feel free to open issues, submit pull requests, or provide feedback.
