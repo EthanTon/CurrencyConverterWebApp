@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 
 function timeConverter(UNIX_timestamp) {
@@ -28,17 +28,17 @@ function timeConverter(UNIX_timestamp) {
   var time =
     date + " " + month + " " + year + " " + hour + ":" + min + " UTC" + timezone;
   return time;
-};
+}
 
 export async function retrieveData(){
   const firebaseConfig = {
-    apiKey: "AIzaSyCiYyGh-b4_hWz9qw71eQ1K_0s5j_N4jRc",
-    authDomain: "satoshi-be9c7.firebaseapp.com",
-    projectId: "satoshi-be9c7",
-    storageBucket: "satoshi-be9c7.appspot.com",
-    messagingSenderId: "75932053545",
-    appId: "1:75932053545:web:b40ed7e1b42bc258ac2c38",
-    measurementId: "G-6Q1VBDL9WE",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
   };
 
   // Initialize Firebase
